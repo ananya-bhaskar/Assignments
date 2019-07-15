@@ -1,0 +1,92 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">    
+</head>
+<body>
+    <script>
+        function validateInput() {
+            var email = document.getElementById("email").value;
+            var firstname = document.getElementById("firstname").value;
+            var lastname = document.getElementById("lastname").value;
+            var contactnum = document.getElementById("contactnum").value;
+            var role = document.getElementById("role").value;
+            var gender = document.getElementById("gender").value;
+            var str = "";
+            if (email == "" || firstname == "" || contactnum == "" || role == "" || gender == "" || lastname == "") {
+                str = "Please fill all the details!! ";
+            }
+            var emailcheck = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (!email.match(emailcheck)) {
+                if (email != "")
+                    str += "Please use valid email!! ";
+            }
+            var phoneno = /^\d{10}$/;
+            if (!contactnum.match(phoneno)) {
+                if (contactnum != "")
+                    str += "Please use valid contact number!! ";
+            }
+            if (str == "") {
+                str = "Successfully created User!!";
+                document.getElementById("email").value = "";
+                document.getElementById("firstname").value = "";
+                document.getElementById("lastname").value = "";
+                document.getElementById("contactnum").value = "";
+                document.getElementById("role").value = "";
+                document.getElementById("gender").value = "";
+            }
+            alert(str);
+        }
+    </script>
+    <div class="header">
+        <div class="leftflex">
+            <div class="op1">RD PORTAL</div>
+            <div class="op2">REPORTS</div>
+            <div class="op2">ADMIN</div>
+            <div class="op2">HELP</div>
+        </div>
+        <div class="rightflex">
+            <img class="userlogo" src="C:\Users\Ananya_Bhaskar\Pictures\user.jpg"></img>
+            <div class="username">Welcome to Ananya</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="createuser">User Creation</div>
+        <hr>
+        <div class="userdetails">
+            <div class="col1">
+                <div class="detailParam">Email</div>
+                <input type="text" id="email" value="" class="textbox"><br>
+                <div class="detailParam">LastName</div>
+                <input type="text" id="lastname" value="" class="textbox"><br>
+            </div>
+            <div class="col1">
+                <div class="detailParam">Reload</div>
+                <select class="dropdown" id="role">
+                    <option value="" disabled selected> Select a Role</option>
+                    <option value="SDE"> SDE</option>
+                    <option value="SDET"> SDET</option>
+                </select>
+                <div class="detailParam">GenderId</div>
+                <select class="dropdown" id="gender">
+                    <option value="" disabled selected> Select a Gender</option>
+                    <option value="F"> FEMALE</option>
+                    <option value="M"> MALE</option>
+                    <option value="O"> OTHER</option>
+                </select>
+            </div>
+            <div class="col1">
+                <div class="detailParam">FirstName</div>
+                <input type="text" id="firstname" value="" class="textbox"><br>
+                <div class="detailParam">ContactNumber</div>
+                <input type="text" id="contactnum" value="" class="textbox"><br>
+            </div>
+        </div>
+        <button type="button" class="createuserbtn" onclick="validateInput()">Create</button>
+        <a href="" class="back">Back to List</a>
+    </div>
+    <div class="footer">
+        <div class="version">RD-Pre Education version: 7.1.026,Node2</div>
+        <div class="help">HELP</div>
+    </div>
+</body>
+</html>
